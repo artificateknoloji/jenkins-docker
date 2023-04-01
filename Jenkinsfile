@@ -3,10 +3,10 @@ pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
-  /*environment {
-    TIMESTAMP=$(TZ=UTC-3 date '+%Y%m%d_%H%M%S')
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-  }*/
+  environment {
+    TIMESTAMP=${BUILD_TIMESTAMP}
+  //  DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+  }
   stages {
     /*
     stage('Build') {
@@ -22,12 +22,12 @@ pipeline {
     */
     stage('Build') {
       steps {
-        sh "docker build -t aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:${TAG_TIMESTAMP} -t aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:latest ."
+        sh "docker build -t aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:${TIMESTAMP} -t aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:latest ."
       }
     }
     stage('Push') {
       steps {
-        sh "docker push aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:${TAG_TIMESTAMP} aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:latest"
+        sh "docker push aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:${TIMESTAMP} aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:latest"
       }
     }
   }
