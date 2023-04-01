@@ -27,7 +27,8 @@ pipeline {
     }
     stage('Push') {
       steps {
-        sh "docker push aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:${TIMESTAMP} aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub:latest"
+        sh "docker push --all-tags aic-storage.us-west4-b.c.aicommerce-371409.internal:5000/jenkins-docker-hub"
+
       }
     }
   }
