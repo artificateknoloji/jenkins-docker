@@ -3,10 +3,10 @@ pipeline {
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
-  environment {
-    //TIMESTAMP=$(TZ=UTC-3 date '+%Y%m%d_%H%M%S')
-    //DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-  }
+  /*environment {
+    TIMESTAMP=$(TZ=UTC-3 date '+%Y%m%d_%H%M%S')
+    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+  }*/
   stages {
     /*
     stage('Build') {
