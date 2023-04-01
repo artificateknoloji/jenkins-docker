@@ -5,7 +5,7 @@ pipeline {
   }
   environment {
     //TIMESTAMP=$(TZ=UTC-3 date '+%Y%m%d_%H%M%S')
-    DOCKERHUB_CREDENTIALS = credentials('dockerhub')
+    //DOCKERHUB_CREDENTIALS = credentials('dockerhub')
   }
   stages {
     /*
